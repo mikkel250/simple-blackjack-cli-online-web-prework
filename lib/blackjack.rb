@@ -1,4 +1,3 @@
-card_total = 0
 
 def welcome
   # code #welcome here
@@ -7,17 +6,17 @@ end
 
 def deal_card
   # code #deal_card here
-  card = rand(1..11)
-  puts "Dealing card...card is #{card}."
-  card_total = card
-  display_card_total(card.to_i)
+  rand(1..11)
+  #puts "Dealing card...card is #{card}."
+  #card_total = card
+  #display_card_total(card.to_i)
   
 end
 
-def display_card_total(number)
+def display_card_total(card_total)
   # code #display_card_total here
   
-  card_total = card_total + number
+  #card_total = card_total + number
  "Your cards add up to #{card_total}"
 end
 
@@ -28,7 +27,7 @@ end
 
 def get_user_input
   # code #get_user_input here
-  input = gets.chomp
+  gets.chomp
 end
 
 def end_game(card_total)
@@ -38,8 +37,16 @@ end
 
 def initial_round
   # code #initial_round here
-  deal_card
-  deal_card
+  card1 = deal_card
+    #puts card1
+    #card1
+  card2 = deal_card
+   #puts card2
+    #card2
+  total = card1 + card2
+    #puts total
+  total
+  display_card_total(total)
   
 end
 
@@ -50,17 +57,17 @@ def hit?
   if input.downcase == 'h'
     deal_card
   elsif input.downcase == 's'
-    "Are you sure? (y/n)"
-    sure = gets.chomp
-    if sure.downcase == y
-    display_card_total
-    else
-      prompt_user
-    end
+    puts "Are you sure? (y/n)"
+    sure = get_user_input
+      if sure.downcase == 'y'
+        display_card_total
+      else
+        prompt_user
+      end
   else
     invalid_command
   end
-  display_card_total
+    display_card_total
 end
 
 def invalid_command
