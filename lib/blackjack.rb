@@ -14,10 +14,7 @@ def deal_card
 end
 
 def display_card_total(card_total)
-  # code #display_card_total here
-  
-  #card_total = card_total + number
- "Your cards add up to #{card_total}"
+ puts "Your cards add up to #{card_total}"
 end
 
 def prompt_user
@@ -32,7 +29,7 @@ end
 
 def end_game(card_total)
   # code #end_game here
-  "Sorry, you hit #{card_total}. Thanks for playing!"
+  puts "Sorry, you hit #{card_total}. Thanks for playing!"
 end
 
 def initial_round
@@ -45,35 +42,33 @@ def initial_round
     #card2
   total = card1 + card2
     #puts total
-  total
-  display_card_total(total)
   
+  display_card_total(total)
+  total
 end
 
-def hit?
+def hit?(card_total)
   # code hit? here
   prompt_user
   input = get_user_input
-  if input.downcase == 'h'
-    deal_card
-  elsif input.downcase == 's'
-    puts "Are you sure? (y/n)"
-    sure = get_user_input
-      if sure.downcase == 'y'
-        display_card_total
-      else
-        prompt_user
-      end
-  else
+  case input
+  when 'h'
+    new_card = deal_card
+    card_total += new_card
+  when 's'
+    #card_total
+    
+  else 
     invalid_command
+    prompt_user
   end
-    display_card_total
+  card_total
 end
 
 def invalid_command
   # code invalid_command here
   puts "Please enter a valid command"
-  prompt_user
+  
 end
 
 #####################################################
@@ -82,11 +77,19 @@ end
 
 def runner
   # code runner here
+  card_total = 0
+   welcome
+    card_total = initial_round
+    card_total = hit?(card_total)  # need to pass the return value to a var
+    display_card_total(card_total)
   until card_total > 21
-    welcome
-    initial_round
-    hit?
-    display_card_total
+    #welcome
+    #initial_round
+    card_total = hit?(card_total)
+    card_total = display_card_total(card_total)
   end
+  end_game(card_total)
 end
-    
+
+
+
