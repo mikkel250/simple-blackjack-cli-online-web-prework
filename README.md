@@ -1,4 +1,8 @@
 # Simplified Blackjack - Procedural
+This is a simple BlackJack game written in Ruby. 
+The task materials are below for reference. 
+If you'd like to play the game yourself, it is a command-line, text based game, so you'll need to clone the repo to your local machine and then run it with Ruby.
+
 
 ## Objective
 
